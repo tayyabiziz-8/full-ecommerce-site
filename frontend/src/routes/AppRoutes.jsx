@@ -5,6 +5,8 @@ import Home from "../pages/Home.jsx";
 import Login from "../pages/Login.jsx";
 import Register from "../pages/Register.jsx";
 import Profile from "../pages/Profile.jsx";
+import ProductListing from "../pages/ProductListing.jsx";
+import ProductDetail from "../pages/ProductDetail.jsx";
 import AdminWorkInProgress from "../pages/admin/AdminWorkInProgress.jsx";
 import NotFound from "../pages/NotFound.jsx";
 
@@ -15,6 +17,8 @@ export default function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/products" element={<ProductListing />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<Profile />} />
         </Route>

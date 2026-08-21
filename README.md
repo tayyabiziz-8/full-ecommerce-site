@@ -9,4 +9,5 @@ frontend WIP
 0. Filled the gaps in backend - added reviews, expanded seeds for final look
 1. Frontend development starts - config files, homepage, navbar, footer, initial styling choices
 2. Auth path added - register, login, profile, protected paths
-3. _WIP_
+3. Products - listings, product details, post reviews, validations
+4. _WIP_
