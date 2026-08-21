@@ -7,7 +7,6 @@ export default function HeroCarousel({ slides }) {
     slideCount: slides.length,
     autoplayMs: 5500,
   });
-
   const dragStartX = useRef(null);
 
   const handlePointerDown = (e) => {
@@ -25,7 +24,6 @@ export default function HeroCarousel({ slides }) {
     if (e.key === "ArrowRight") next();
     if (e.key === "ArrowLeft") prev();
   };
-
   const slide = slides[index];
 
   return (
@@ -77,7 +75,7 @@ export default function HeroCarousel({ slides }) {
         {slide.title}
       </p>
 
-      {/* index + progress tabs, bottom-left — a real sequence, so numbering earns its place */}
+      {/* index + progress tabs, bottom-left - a real sequence, so numbering earns its place */}
       <div className="absolute bottom-6 left-6 flex items-center gap-4">
         <span className="font-display text-xs tabular-nums text-paper/70">
           {String(index + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
@@ -106,7 +104,6 @@ export default function HeroCarousel({ slides }) {
         </div>
       </div>
 
-      {/* prev/next arrows */}
       <button
         onClick={prev}
         aria-label="Previous slide"

@@ -6,6 +6,7 @@ frontend WIP
 
 ### 7 iterations for frontend integration
 
-1. Filled the gaps in backend - added reviews, expanded seeds for final look
-2. Frontend development starts - config files, homepage, navbar, footer, initial styling choices
+0. Filled the gaps in backend - added reviews, expanded seeds for final look
+1. Frontend development starts - config files, homepage, navbar, footer, initial styling choices
+2. Auth path added - register, login, profile, protected paths
 3. _WIP_
