@@ -6,7 +6,6 @@ export const getProductsRequest = async ({ categoryId, search, page = 1, limit =
   });
   return res.data.data; // { products, pagination }
 };
-
 export const getProductRequest = async (id) => {
   const res = await axiosClient.get(`/products/${id}`);
   return res.data.data;

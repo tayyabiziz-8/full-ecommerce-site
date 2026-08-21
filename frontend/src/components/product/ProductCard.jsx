@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import WishlistButton from "./WishlistButton.jsx";
 
 export default function ProductCard({ product }) {
   const [imgError, setImgError] = useState(false);
@@ -25,7 +26,7 @@ export default function ProductCard({ product }) {
           </div>
         )}
         {hasDiscount && (
-          <span className="absolute left-2 top-2 rounded bg-accent-warm px-2 py-0.5 text-xs font-semibold text-ink">
+          <span className="absolute left-3 top-3 rounded bg-accent-warm px-2 py-0.5 text-xs font-semibold text-ink">
             Sale
           </span>
         )}
@@ -34,6 +35,7 @@ export default function ProductCard({ product }) {
             Out of stock
           </span>
         )}
+        <WishlistButton productId={product.id} className="absolute right-2 top-2" />
       </div>
       <div className="flex flex-col gap-1 p-3">
         <span className="text-sm text-ink line-clamp-1">{product.name}</span>

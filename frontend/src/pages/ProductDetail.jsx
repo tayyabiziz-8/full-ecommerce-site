@@ -9,6 +9,7 @@ import { useCart } from "../hooks/useCart.js";
 import StarRating from "../components/product/StarRating.jsx";
 import ReviewList from "../components/product/ReviewList.jsx";
 import ReviewForm from "../components/product/ReviewForm.jsx";
+import WishlistButton from "../components/product/WishlistButton.jsx";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -72,8 +73,13 @@ export default function ProductDetail() {
         </div>
 
         <div>
-          <span className="eyebrow">{product.category?.name}</span>
-          <h1 className="mt-2 font-display text-3xl font-semibold">{product.name}</h1>
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <span className="eyebrow">{product.category?.name}</span>
+              <h1 className="mt-2 font-display text-3xl font-semibold">{product.name}</h1>
+            </div>
+            <WishlistButton productId={product.id} className="border border-line" />
+          </div>
 
           {reviewData && (
             <div className="mt-2 flex items-center gap-2">

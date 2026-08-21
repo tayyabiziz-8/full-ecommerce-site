@@ -8,6 +8,7 @@ import Profile from "../pages/Profile.jsx";
 import ProductListing from "../pages/ProductListing.jsx";
 import ProductDetail from "../pages/ProductDetail.jsx";
 import Cart from "../pages/Cart.jsx";
+import Wishlist from "../pages/Wishlist.jsx";
 import AdminWorkInProgress from "../pages/admin/AdminWorkInProgress.jsx";
 import NotFound from "../pages/NotFound.jsx";
 
@@ -23,6 +24,7 @@ export default function AppRoutes() {
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<Profile />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/wishlist" element={<Wishlist />} />
         </Route>
         <Route path="/admin/*" element={<AdminWorkInProgress />} />
         <Route path="*" element={<NotFound />} />

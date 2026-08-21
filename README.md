@@ -11,4 +11,5 @@ frontend WIP
 2. Auth path added - register, login, profile, protected paths
 3. Products - listings, product details, post reviews, validations
 4. Cart - calculating total, cap at stock limit, cart page
-5. _WIP_
+5. Wishlist - icon on product card and details, wishlist page
+6. _WIP_
