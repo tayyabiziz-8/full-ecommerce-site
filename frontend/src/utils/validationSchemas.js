@@ -12,3 +12,11 @@ export const registerSchema = Yup.object({
   phone: Yup.string().optional(),
   password: Yup.string().min(6, "At least 6 characters").required("Password is required"),
 });
+
+export const checkoutSchema = Yup.object({
+  street: Yup.string().required("Street address is required"),
+  city: Yup.string().required("City is required"),
+  postalCode: Yup.string().required("Postal code is required"),
+  country: Yup.string().required("Country is required"),
+  paymentMethod: Yup.string().oneOf(["card", "cash_on_delivery"]).required("Choose a payment method"),
+});

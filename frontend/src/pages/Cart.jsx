@@ -43,12 +43,12 @@ export default function Cart() {
         <span className="font-display text-xl font-semibold">${subtotal.toFixed(2)}</span>
       </div>
 
-      <button
-        onClick={() => toast.info("Checkout is coming in the next iteration")}
-        className="mt-6 w-full rounded bg-accent px-5 py-3 text-sm font-semibold text-paper transition-colors hover:bg-accent/90"
+      <Link
+        to="/checkout"
+        className="mt-6 block w-full rounded bg-accent px-5 py-3 text-center text-sm font-semibold text-paper transition-colors hover:bg-accent/90"
       >
         Proceed to checkout
-      </button>
+      </Link>
     </div>
   );
 }

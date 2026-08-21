@@ -9,6 +9,9 @@ import ProductListing from "../pages/ProductListing.jsx";
 import ProductDetail from "../pages/ProductDetail.jsx";
 import Cart from "../pages/Cart.jsx";
 import Wishlist from "../pages/Wishlist.jsx";
+import Checkout from "../pages/Checkout.jsx";
+import Orders from "../pages/Orders.jsx";
+import OrderDetail from "../pages/OrderDetail.jsx";
 import AdminWorkInProgress from "../pages/admin/AdminWorkInProgress.jsx";
 import NotFound from "../pages/NotFound.jsx";
 
@@ -25,6 +28,9 @@ export default function AppRoutes() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/orders/:id" element={<OrderDetail />} />
         </Route>
         <Route path="/admin/*" element={<AdminWorkInProgress />} />
         <Route path="*" element={<NotFound />} />
