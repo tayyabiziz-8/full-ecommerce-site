@@ -1,16 +1,17 @@
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { useAuth } from "../../hooks/useAuth.js";
+import { useCart } from "../../hooks/useCart.js";
 
 const links = [
   { label: "Shop", href: "/products" },
   { label: "Categories", href: "/categories" },
   { label: "Wishlist", href: "/wishlist" },
-  { label: "Cart", href: "/cart" },
 ];
 
 export default function Navbar() {
   const { user, isAuthenticated, logout } = useAuth();
+  const { itemCount } = useCart();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -36,26 +37,36 @@ export default function Navbar() {
             </Link>
           ))}
         </nav>
-        {isAuthenticated ? (
-          <div className="flex items-center gap-4">
-            <Link to="/profile" className="text-sm font-medium text-ink/90 hover:text-accent">
-              {user.firstName}
-            </Link>
-            <button
-              onClick={handleLogout}
+        <div className="flex items-center gap-4">
+          <Link to="/cart" className="relative text-sm text-ink/80 hover:text-accent">
+            Cart
+            {itemCount > 0 && (
+              <span className="absolute -right-3 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-accent px-1 text-[10px] font-semibold text-paper">
+                {itemCount}
+              </span>
+            )}
+          </Link>
+          {isAuthenticated ? (
+            <>
+              <Link to="/profile" className="text-sm font-medium text-ink/90 hover:text-accent">
+                {user.firstName}
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="rounded border border-ink px-4 py-1.5 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
+              >
+                Sign out
+              </button>
+            </>
+          ) : (
+            <Link
+              to="/login"
               className="rounded border border-ink px-4 py-1.5 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
             >
-              Sign out
-            </button>
-          </div>
-        ) : (
-          <Link
-            to="/login"
-            className="rounded border border-ink px-4 py-1.5 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
-          >
-            Sign in
-          </Link>
-        )}
+              Sign in
+            </Link>
+          )}
+        </div>
       </div>
     </header>
   );

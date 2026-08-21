@@ -7,6 +7,7 @@ import Register from "../pages/Register.jsx";
 import Profile from "../pages/Profile.jsx";
 import ProductListing from "../pages/ProductListing.jsx";
 import ProductDetail from "../pages/ProductDetail.jsx";
+import Cart from "../pages/Cart.jsx";
 import AdminWorkInProgress from "../pages/admin/AdminWorkInProgress.jsx";
 import NotFound from "../pages/NotFound.jsx";
 
@@ -21,6 +22,7 @@ export default function AppRoutes() {
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<Profile />} />
+          <Route path="/cart" element={<Cart />} />
         </Route>
         <Route path="/admin/*" element={<AdminWorkInProgress />} />
         <Route path="*" element={<NotFound />} />

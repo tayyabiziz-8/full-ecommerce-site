@@ -10,4 +10,5 @@ frontend WIP
 1. Frontend development starts - config files, homepage, navbar, footer, initial styling choices
 2. Auth path added - register, login, profile, protected paths
 3. Products - listings, product details, post reviews, validations
-4. _WIP_
+4. Cart - calculating total, cap at stock limit, cart page
+5. _WIP_

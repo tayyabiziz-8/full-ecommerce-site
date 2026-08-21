@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { toast } from "sonner";
 import { getProductRequest } from "../api/product.api.js";
 import { getProductReviewsRequest } from "../api/review.api.js";
 import { useAuth } from "../hooks/useAuth.js";
+import { useCart } from "../hooks/useCart.js";
 import StarRating from "../components/product/StarRating.jsx";
 import ReviewList from "../components/product/ReviewList.jsx";
 import ReviewForm from "../components/product/ReviewForm.jsx";
@@ -11,7 +13,9 @@ import ReviewForm from "../components/product/ReviewForm.jsx";
 export default function ProductDetail() {
   const { id } = useParams();
   const { isAuthenticated } = useAuth();
+  const { addToCart, isMutating } = useCart();
   const [activeImage, setActiveImage] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   const { data: product, isLoading } = useQuery({
     queryKey: ["product", id],
@@ -28,6 +32,15 @@ export default function ProductDetail() {
 
   const hasDiscount = product.discountPrice && Number(product.discountPrice) < Number(product.price);
   const images = product.images?.length ? product.images : [null];
+  const outOfStock = product.stock <= 0;
+
+  const handleAddToCart = () => {
+    if (!isAuthenticated) {
+      toast.info("Sign in to add items to your cart");
+      return;
+    }
+    addToCart({ productId: product.id, quantity });
+  };
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-10">
@@ -83,14 +96,41 @@ export default function ProductDetail() {
           <p className="mt-4 text-sm text-ink/80">{product.description}</p>
 
           <p className="mt-4 text-sm">
-            {product.stock > 0 ? (
-              <span className="text-accent">In stock ({product.stock} available)</span>
-            ) : (
+            {outOfStock ? (
               <span className="text-red-500">Out of stock</span>
+            ) : (
+              <span className="text-accent">In stock ({product.stock} available)</span>
             )}
           </p>
 
-          {/* Add-to-cart button lands here in the Cart iteration */}
+          {!outOfStock && (
+            <div className="mt-6 flex items-center gap-4">
+              <div className="flex items-center rounded border border-line">
+                <button
+                  onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                  className="px-3 py-2 text-ink/70 hover:text-accent"
+                  aria-label="Decrease quantity"
+                >
+                  −
+                </button>
+                <span className="w-8 text-center text-sm">{quantity}</span>
+                <button
+                  onClick={() => setQuantity((q) => Math.min(product.stock, q + 1))}
+                  className="px-3 py-2 text-ink/70 hover:text-accent"
+                  aria-label="Increase quantity"
+                >
+                  +
+                </button>
+              </div>
+              <button
+                onClick={handleAddToCart}
+                disabled={isMutating}
+                className="rounded bg-accent px-6 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-accent/90 disabled:opacity-60"
+              >
+                {isMutating ? "Adding…" : "Add to cart"}
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
