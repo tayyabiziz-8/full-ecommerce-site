@@ -23,7 +23,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <App />
           </AuthProvider>
         </BrowserRouter>
-        <Toaster position="top-right" richColors closeButton />
+        <Toaster position="bottom-right" richColors closeButton />
       </ThemeProvider>
     </QueryClientProvider>
   </React.StrictMode>

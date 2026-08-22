@@ -12,4 +12,5 @@ frontend WIP
 3. Products - listings, product details, post reviews, validations
 4. Cart - calculating total, cap at stock limit, cart page
 5. Wishlist - icon on product card and details, wishlist page
-6. _WIP_
+6. Order - checkout, validations, details
+7. _Final touches (WIP)_

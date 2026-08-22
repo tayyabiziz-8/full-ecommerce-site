@@ -20,3 +20,11 @@ export const checkoutSchema = Yup.object({
   country: Yup.string().required("Country is required"),
   paymentMethod: Yup.string().oneOf(["card", "cash_on_delivery"]).required("Choose a payment method"),
 });
+
+export const changePasswordSchema = Yup.object({
+  oldPassword: Yup.string().required("Current password is required"),
+  newPassword: Yup.string().min(6, "At least 6 characters").required("New password is required"),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref("newPassword")], "Passwords don't match")
+    .required("Confirm your new password"),
+});

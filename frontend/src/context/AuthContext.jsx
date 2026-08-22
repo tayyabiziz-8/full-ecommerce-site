@@ -54,6 +54,10 @@ export function AuthProvider({ children }) {
     }
   }, [queryClient]);
 
+  const updateUser = useCallback((patch) => {
+    setUser((prev) => (prev ? { ...prev, ...patch } : prev));
+  }, []);
+
   const value = {
     user,
     isAuthenticated: Boolean(user),
@@ -61,6 +65,7 @@ export function AuthProvider({ children }) {
     login,
     register,
     logout,
+    updateUser,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
